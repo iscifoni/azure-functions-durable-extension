@@ -2510,10 +2510,7 @@ namespace Microsoft.Azure.WebJobs.Extensions.DurableTask.Tests
                 });
 
             Assert.NotNull(argumentException);
-            Assert.Equal(
-                argumentException.Message.Contains($"{taskHubName}V1")
-                    ? $"Task hub name '{taskHubName}V1' should contain only alphanumeric characters excluding '-' and have length up to 50."
-                    : $"Task hub name '{taskHubName}V2' should contain only alphanumeric characters excluding '-' and have length up to 50.",
+            Assert.Equal($"Task hub name '{taskHubName}' should contain only alphanumeric characters excluding '-' and have length up to 50.",
                 argumentException.Message);
         }
 
@@ -2591,7 +2588,6 @@ namespace Microsoft.Azure.WebJobs.Extensions.DurableTask.Tests
             string taskHubName = extendedSessions
                 ? $"{defaultTaskHubName}EX"
                 : defaultTaskHubName;
-            taskHubName += PlatformSpecificHelpers.VersionSuffix;
 
             Assert.Equal(
                 $"{notificationUrl}/instances/{instanceId}?taskHub={taskHubName}&connection=Storage&code=mykey",

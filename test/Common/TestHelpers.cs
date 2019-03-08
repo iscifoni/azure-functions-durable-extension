@@ -75,7 +75,7 @@ namespace Microsoft.Azure.WebJobs.Extensions.DurableTask.Tests
 
         public static string GetTaskHubNameFromTestName(string testName, bool enableExtendedSessions)
         {
-            return testName.Replace("_", "") + (enableExtendedSessions ? "EX" : "") + PlatformSpecificHelpers.VersionSuffix;
+            return testName.Replace("_", "") + (enableExtendedSessions ? "EX" : "");
         }
 
         public static ITypeLocator GetTypeLocator()
